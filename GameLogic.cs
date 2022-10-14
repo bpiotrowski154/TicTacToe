@@ -33,9 +33,9 @@ namespace TicTacToe
         public bool PlayerWin()
         {
             //Check horizontal row
-            for(var i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
-                //if The first cell is not empty
+                //if The first cell in row is not empty
                 if (!String.IsNullOrWhiteSpace(Board[0, i]))
                 {
                     //If first cell = second cell and first cell ==  third cell
@@ -45,7 +45,7 @@ namespace TicTacToe
             }
 
             //Check the columns
-            for(var i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
                 if (!String.IsNullOrWhiteSpace(Board[i, 0]))
                 {
@@ -55,7 +55,16 @@ namespace TicTacToe
             }
 
             //Check diagonals
-
+            if (!String.IsNullOrWhiteSpace(Board[0, 0]))
+            {
+                if (Board[0, 0] == Board[1, 1] && Board[0, 0] == Board[2, 2])
+                    return true;
+            }
+            if (!String.IsNullOrWhiteSpace(Board[0, 2]))
+            {
+                if (Board[0, 2] == Board[1, 1] && Board[0, 2] == Board[2, 0])
+                    return true;
+            }
 
             return false;
         }
