@@ -45,7 +45,14 @@ namespace TicTacToe
             }
 
             //Check the columns
-
+            for(var i = 0; i < 3; i++)
+            {
+                if (!String.IsNullOrWhiteSpace(Board[i, 0]))
+                {
+                    if (Board[i, 0] == Board[i, 1] && Board[i, 1] == Board[i, 2])
+                        return true;
+                }
+            }
 
             //Check diagonals
 
