@@ -15,6 +15,7 @@ namespace TicTacToe
         private const string x = "X";
         private const string o = "O";
         private string[,] Board = new string[3, 3];
+        public bool GameDone = false;
 
 
         //Checks current player and then swaps to the next player to change turns
@@ -40,7 +41,11 @@ namespace TicTacToe
                 {
                     //If first cell = second cell and first cell ==  third cell
                     if (Board[0, i] == Board[1, i] && Board[0, i] == Board[2, i])
+                    {
+                        GameDone = true;
                         return true;
+                    }
+                
                 }
             }
 
@@ -50,7 +55,10 @@ namespace TicTacToe
                 if (!String.IsNullOrWhiteSpace(Board[i, 0]))
                 {
                     if (Board[i, 0] == Board[i, 1] && Board[i, 1] == Board[i, 2])
+                    {
+                        GameDone = true;
                         return true;
+                    }
                 }
             }
 
@@ -58,12 +66,18 @@ namespace TicTacToe
             if (!String.IsNullOrWhiteSpace(Board[0, 0]))
             {
                 if (Board[0, 0] == Board[1, 1] && Board[0, 0] == Board[2, 2])
+                {
+                    GameDone = true;
                     return true;
+                }
             }
             if (!String.IsNullOrWhiteSpace(Board[0, 2]))
             {
                 if (Board[0, 2] == Board[1, 1] && Board[0, 2] == Board[2, 0])
+                {
+                    GameDone = true;
                     return true;
+                }
             }
 
             return false;

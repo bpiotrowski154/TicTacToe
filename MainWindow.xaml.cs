@@ -31,8 +31,11 @@ namespace TicTacToe
         {
             var cell = (Button)sender;
 
-            //Checks if current cell is already occupied by an X or O
+            //Checks if current cell is already occupied by an X or O or if it is the new game button
             if (!String.IsNullOrWhiteSpace(cell.Content?.ToString()))
+                return;
+            //Checks if the game has already been won to prevent placement of more X's or O's
+            if (_GameLogic.GameDone)
                 return;
 
             //Sets the cell that is clicked to be an X or O depending on the current player
@@ -60,8 +63,7 @@ namespace TicTacToe
             }
 
             //Switches turns
-            _GameLogic.SetNextPlayer();
-            
+            _GameLogic.SetNextPlayer();    
         }
 
 
